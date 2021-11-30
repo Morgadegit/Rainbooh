@@ -88,9 +88,11 @@ const adMutation = new GraphQLObjectType({
                 },
             resolve: (_, args) => {
                 var i = 0;
+                const ret = seedData.find(ad => ad.id == args.id)
                 while (seedData[i].id != args.id)
                     i++;
-                return seedData.splice(i, 1);
+                seedData.splice(i, 1);
+                return ret
             }
         }
     }
