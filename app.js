@@ -56,7 +56,7 @@ const adQuery = new GraphQLObjectType({
     }
 })
 
-const rootMutation = new GraphQLObjectType({
+const adMutation = new GraphQLObjectType({
     name: "adMutation",
     fields:{
         addAd: {
@@ -80,11 +80,23 @@ const rootMutation = new GraphQLObjectType({
                     seedData.push(newAd)
                     return newAd
             }
+        },
+            delAd: {
+                type:adType,
+                args: {
+                    id: {type:GraphQLInt}
+                },
+            resolve: (_, args) => {
+                var i = 0;
+                while (seedData[i].id != args.id)
+                    i++;
+                return seedData.splice(i, 1);
+            }
         }
     }
 })
 
-const schema = new GraphQLSchema({ query:adQuery, mutation: rootMutation });
+const schema = new GraphQLSchema({ query:adQuery, mutation:adMutation });
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
