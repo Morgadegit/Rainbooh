@@ -1,5 +1,5 @@
 # Rainbooh
-run "npm run-script dev" to start the server and browse to localhost:4000
+run "npm run-script dev" to start the server and browse to localhost:4000/graphql
 
 ressources used
 
