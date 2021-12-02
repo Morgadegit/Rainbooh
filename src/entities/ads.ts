@@ -10,8 +10,8 @@ export class Campaign {
   id!: number;
 
   @Field()
-  @Property({unique: true})
-  companyName: string;
+  @Property()
+  companyName!: string;
 
   @Field({ defaultValue : "rien"})
   @Property({type: 'text'})

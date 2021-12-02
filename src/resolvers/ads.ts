@@ -7,7 +7,7 @@ export class AdsResolver {
 @Query(() => [Campaign])
     adDisplay(
     @Ctx() {em}: MyContext): Promise<Campaign[]>
-    { return em.find(Campaign, {})}
+    {return em.find(Campaign, {})}
 
 @Query(() => Campaign, {nullable: true})
     adSingle(

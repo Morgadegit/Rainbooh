@@ -27,7 +27,7 @@ __decorate([
 ], Campaign.prototype, "id", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    (0, core_1.Property)({ unique: true }),
+    (0, core_1.Property)(),
     __metadata("design:type", String)
 ], Campaign.prototype, "companyName", void 0);
 __decorate([

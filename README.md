@@ -1,5 +1,7 @@
 # Rainbooh
-run "yarn dev" to start the server and browse to localhost:4000/graphql
+run "yarn migrate && yarn up && yarn dev" to create the migrations, migrate the databases and start the server.
+
+Then browse to localhost:4000/graphql
 
 ressources used
 
