@@ -121,6 +121,18 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename?: 'User', id: number, username: string } | null | undefined } };
 
+export type AdSingleQueryVariables = Exact<{
+  adSingleId: Scalars['Int'];
+}>;
+
+
+export type AdSingleQuery = { __typename?: 'Query', adSingle?: { __typename?: 'Campaign', id: number, companyName: string, desc?: string | null | undefined, startDate: string } | null | undefined };
+
+export type AdDisplayQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AdDisplayQuery = { __typename?: 'Query', adDisplay: Array<{ __typename?: 'Campaign', id: number, companyName: string, desc?: string | null | undefined, startDate: string }> };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -162,6 +174,34 @@ export const RegisterDocument = gql`
 
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
+};
+export const AdSingleDocument = gql`
+    query AdSingle($adSingleId: Int!) {
+  adSingle(id: $adSingleId) {
+    id
+    companyName
+    desc
+    startDate
+  }
+}
+    `;
+
+export function useAdSingleQuery(options: Omit<Urql.UseQueryArgs<AdSingleQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<AdSingleQuery>({ query: AdSingleDocument, ...options });
+};
+export const AdDisplayDocument = gql`
+    query AdDisplay {
+  adDisplay {
+    id
+    companyName
+    desc
+    startDate
+  }
+}
+    `;
+
+export function useAdDisplayQuery(options: Omit<Urql.UseQueryArgs<AdDisplayQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<AdDisplayQuery>({ query: AdDisplayDocument, ...options });
 };
 export const MeDocument = gql`
     query Me {

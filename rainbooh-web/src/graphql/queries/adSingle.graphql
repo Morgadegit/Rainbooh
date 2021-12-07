@@ -1,0 +1,8 @@
+query AdSingle($adSingleId: Int!) {
+  adSingle(id: $adSingleId) {
+    id
+    companyName
+    desc
+    startDate
+  }
+}

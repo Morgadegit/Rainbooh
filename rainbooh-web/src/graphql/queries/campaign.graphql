@@ -1,0 +1,8 @@
+query AdDisplay {
+  adDisplay {
+    id
+    companyName
+    desc
+    startDate
+  }
+}

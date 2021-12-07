@@ -7,12 +7,14 @@ import { Button } from "@chakra-ui/button";
 import { useLoginMutation } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMaps";
 import { useRouter } from "next/router";
+import { NavBar } from "../components/NavBar";
 
 export const Login: React.FC<{}> = ({}) => {
     const router = useRouter()
     const [, login] = useLoginMutation();
     return (
         <Wrapper variant={"small"}>
+        <NavBar />
         <Formik 
         initialValues={{username : "", password: ""}}
         onSubmit={async (values, {setErrors}) => {
@@ -20,7 +22,7 @@ export const Login: React.FC<{}> = ({}) => {
             if (response.data?.login.errors)
                 setErrors(toErrorMap(response.data.login.errors));
             else
-                router.push('/')
+                router.push('list');
         }}
         >
             {( props ) => (
