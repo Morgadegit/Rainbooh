@@ -7,7 +7,6 @@ import {buildSchema} from 'type-graphql';
 import { HelloResolver } from "./resolvers/hello";
 import { AdsResolver } from "./resolvers/ads";
 import { UserResolver } from "./resolvers/user";
-import { Campaign } from "./entities/ads";
 import connectRedis from 'connect-redis';
 import { MyContext } from "./types";
 import session from 'express-session';
@@ -58,9 +57,9 @@ const main = async () => {
     
   apolloServer.applyMiddleware({ app, cors: false});
 
-  app.listen(4000, () => console.log('Server start'));
-  const ad = orm.em.create(Campaign, {companyName: 'Ynsect', desc: 'Startup d\'entomocultiure'});
-  await orm.em.persistAndFlush(ad);
+  const LISTEN = 4000;
+
+  app.listen(LISTEN, () => console.log(`Server start at ${LISTEN}`));
 };
 
 main();

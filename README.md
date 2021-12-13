@@ -24,3 +24,5 @@ https://www.youtube.com/watch?v=I6ypD7qv3Z8
 https://reactjs.org/tutorial/tutorial.html#setup-for-the-tutorial
 
 https://dev.to/lastnameswayne/how-to-implement-authentication-with-graphql-and-redis-1k1b
+
+https://www.youtube.com/watch?v=w7ejDZ8SWv8

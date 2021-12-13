@@ -26,7 +26,6 @@ export class UserResolver {
     {
         if (!req.sessionID)
           return null;
-    
     const user = await em.findOne(User, {username: req.sessionID})
         return user;
     }
@@ -52,7 +51,7 @@ export class UserResolver {
     async login(
         @Arg('username') username:string,
         @Arg('password') password:string,
-        @Ctx() {em/*, req*/ }: MyContext): Promise<UserResponse> {
+        @Ctx() {em, req }: MyContext): Promise<UserResponse> {
         const user = await em.findOne(User, {username: username});
             if(!user) {
             return {
@@ -73,7 +72,7 @@ export class UserResolver {
               ]
           }
 
-          //req.cookies. = user.id;
+          req.sessionID = user.username;
           return { user };
         }        
     @Query(() => User)

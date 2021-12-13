@@ -12,7 +12,6 @@ const type_graphql_1 = require("type-graphql");
 const hello_1 = require("./resolvers/hello");
 const ads_1 = require("./resolvers/ads");
 const user_1 = require("./resolvers/user");
-const ads_2 = require("./entities/ads");
 const connect_redis_1 = __importDefault(require("connect-redis"));
 const express_session_1 = __importDefault(require("express-session"));
 const cors_1 = __importDefault(require("cors"));
@@ -49,9 +48,8 @@ const main = async () => {
     });
     await apolloServer.start();
     apolloServer.applyMiddleware({ app, cors: false });
-    app.listen(4000, () => console.log('Server start'));
-    const ad = orm.em.create(ads_2.Campaign, { companyName: 'Ynsect', desc: 'Startup d\'entomocultiure' });
-    await orm.em.persistAndFlush(ad);
+    const LISTEN = 4000;
+    app.listen(LISTEN, () => console.log(`Server start at ${LISTEN}`));
 };
 main();
 //# sourceMappingURL=index.js.map

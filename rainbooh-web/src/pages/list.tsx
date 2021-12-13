@@ -1,20 +1,19 @@
-import React from "react";
 import { NavBar } from "../components/NavBar";
+import { AdSingle } from "../components/AdSingle";
 import { useAdDisplayQuery } from "../generated/graphql";
 
 export const List = () => {
-
-    const ad = useAdDisplayQuery()[0].data?.adDisplay;
-    console.log(ad);
-    // console.log(ad[0].companyName);
+  const name = useAdDisplayQuery()[0].data?.adDisplay[0].companyName;
+  const desc = useAdDisplayQuery()[0].data?.adDisplay[0].desc;
+  const date = useAdDisplayQuery()[0].data?.adDisplay[0].startDate;
+  const newDate = new Date(parseInt(date!) * 1000).toDateString();
+  console.log(name);
+  console.log(desc);
+  console.log(newDate);
     return(<>
         <NavBar />
-        <ul>
-        {ad?.forEach(element => {
-            <li>{element.companyName}</li>            
-        })};
-        </ul>
+        <AdSingle name={name!} desc={desc!} date={newDate!} />
     </>)
 }
 
-export default List;
+export default List;  

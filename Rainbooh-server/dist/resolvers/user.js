@@ -83,7 +83,7 @@ let UserResolver = class UserResolver {
                     }
                 ]
             };
-        req.session.userId = user.id;
+        req.sessionID = user.username;
         return { user };
     }
     showUser(id, { em }) { return em.findOne(users_1.User, { id }); }
